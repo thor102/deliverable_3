@@ -78,39 +78,44 @@ class Warrior(Character):
         )
 
 class Mage(Character):
-    """A magic user with mana."""
+    """A spellcaster that uses mana."""
 
     def __init__(
-        self, 
-        name: str, 
-        hp_max: int = 80, 
-        damage: int = 10, 
-        mana: int = 50,
-        spell_damage: int = 25,
-        weapon=None,
-    )-> None:
-        super().__init__(name, hp_max, damage, weapon)
-        self.mana = mana
-        self.spell_damage = spell_damage
+        self,
+        name: str,
+        hp_max: int = 80,
+        mana: int = 30,
+        mana_max: int = 30,
+        **kwargs,
+    ) -> None:
+        """
+        Initialise the Mage.
+
+        Args:
+            name (str): The name of the character.
+            hp_max (int): Max hit points (default = 80)
+            mana (int): Starting mana (default = 30)
+            mana_max (int): Max mana (default = 30)
+            **kwargs: Passed on to Character (damage, weapon, ...)
+        """
+        super().__init__(name=name, hp_max=hp_max, **kwargs)
+        self.mana_max = mana_max
+        self.mana = min(mana, mana_max)
 
     def attack(self, target) -> None:
         """
-        Uses a spell if enough mana is available.
-        Otherwise performs a normal attack.
+        Cast a spell (double damage, no weapon) if mana >= 10.
+        Otherwise do a base attack (uses weapon if equipped) and restore 5 mana.
         """
-
         if self.mana >= 10:
-            self.mana -=10
-            target.take_damage(self.spell_damage)
-
-        elif self.weapon is not None:
-            target.take_damage(self.weapon.roll_damage())
-
+            self.mana -= 10
+            target.take_damage(2 * self.damage)
         else:
-            target.take_damage(self.damage)
+            super().attack(target)
+            self.mana = min(self.mana + 5, self.mana_max)
 
     def __str__(self) -> str:
         return (
-            f"Mage: {self.name}, HP={self.hp}, "
-            f"Damage={self.damage}, Mana={self.name}"
+            f"Mage: {self.name}, HP={self.hp}, Damage={self.damage}, "
+            f"Mana={self.mana}/{self.mana_max}"
         )
