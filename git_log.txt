@@ -1,0 +1,13 @@
+﻿* fcd2064 - Mads Helle, 31 seconds ago : Update requirements.txt
+*   2af5385 - Mads Helle, 5 minutes ago : Merge branch 'main' of https://github.com/thor102/deliverable_3 # Please enter a commit message to explain why this merge is necessary, # especially if it merges an updated upstream into a topic branch. # # Lines starting with '#' will be ignored, and an empty message aborts # the commit.
+|\  
+| * af0bf13 - thor102, 2 days ago : lagt til requirements.txt
+* | fd0edaa - Mads Helle, 10 minutes ago : ferdig
+|/  
+* eb49060 - Mads Helle, 2 days ago : Fix Mage, add Battle with max_rounds, Task 4 and 5 tests
+* d371a7e - Mads Helle, 2 days ago : Fix Mage, add Battle with max_rounds, Task 4 and 5 tests
+* 81cd1aa - Mads Helle, 2 days ago : begynt Task 5: Battle
+* 558bcc0 - thor102, 3 days ago : sm├Ñ endringer p├Ñ taks 1 til 3
+* cb4b231 - Mads Helle, 7 days ago : lagt til  Warrior og Mage , (s├Ñ og si ferdig task 4)
+* 1fafb1c - thor102, 8 days ago : nesten ferdig task 1, 2, 3 og litt 4
+* 1dd7725 - thor102, 11 days ago : Initial commit
